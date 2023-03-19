@@ -12,7 +12,7 @@ let package = Package(
     products: [
         .library(
             name: "YAnalyticsPendo",
-            targets: ["YPendo"]
+            targets: ["YAnalyticsPendo"]
         )
     ],
     dependencies: [
