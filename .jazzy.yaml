@@ -6,10 +6,10 @@ theme: fullwidth
 output: ./docs
 documentation: ./*.md
 swift_build_tool: xcodebuild
-module: YPendo
+module: YAnalyticsPendo
 xcodebuild_arguments:
   - -scheme
-  - YPendo
+  - YAnalyticsPendo
   - -sdk
   - iphonesimulator
   - -destination

@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "YPendo",
+    name: "YAnalyticsPendo",
     defaultLocalization: "en",
     platforms: [
         .iOS(.v14)
     ],
     products: [
         .library(
-            name: "YPendo",
+            name: "YAnalyticsPendo",
             targets: ["YPendo"]
         )
     ],
@@ -23,14 +23,14 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "YPendo",
+            name: "YAnalyticsPendo",
             dependencies: [
                 .product(name: "Pendo", package: "pendo-mobile-ios")
             ]
         ),
         .testTarget(
-            name: "YPendoTests",
-            dependencies: ["YPendo"]
+            name: "YAnalyticsPendoTests",
+            dependencies: ["YAnalyticsPendo"]
         )
     ]
 )
