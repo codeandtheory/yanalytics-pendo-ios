@@ -17,10 +17,10 @@ public struct PendoSessionData {
     public var accountId: String?
     
     /// visitor data
-    public var visitorData: [String: Any]?
+    public var visitorData: [String: Any]
     
     /// account data
-    public var accountData: [String: Any]?
+    public var accountData: [String: Any]
     
     /// Initializes a session data
     /// - Parameters:
@@ -31,8 +31,8 @@ public struct PendoSessionData {
     public init(
         visitorId: String? = nil,
         accountId: String? = nil,
-        visitorData: [String: Any]? = nil,
-        accountData: [String: Any]? = nil
+        visitorData: [String: Any] = [:],
+        accountData: [String: Any] = [:]
     ) {
         self.visitorId = visitorId
         self.accountId = accountId

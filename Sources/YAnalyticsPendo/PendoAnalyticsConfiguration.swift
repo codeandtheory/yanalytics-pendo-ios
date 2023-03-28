@@ -18,10 +18,10 @@ public struct PendoAnalyticsConfiguration {
     public let mappings: [String: PendoEventMapping]
     
     /// Information required to intilialize a session in Pendo
-    public var sessionData: PendoSessionData
+    public let sessionData: PendoSessionData
     
     /// Turn on/off debug mode in Pendo
-    public var debugMode: Bool
+    public let debugMode: Bool
 
     /// Initializes Pendo analytics configuration
     /// - Parameters:
