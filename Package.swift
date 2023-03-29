@@ -18,12 +18,17 @@ let package = Package(
         .package(
             url: "https://github.com/pendo-io/pendo-mobile-ios",
             .upToNextMajor(from: "2.10.0")
+        ),
+        .package(
+            url: "https://github.com/yml-org/yanalytics-ios.git",
+            .upToNextMajor(from: "1.2.0")
         )
     ],
     targets: [
         .target(
             name: "YAnalyticsPendo",
             dependencies: [
+                .product(name: "YAnalytics", package: "yanalytics-ios"),
                 .product(name: "Pendo", package: "pendo-mobile-ios")
             ]
         ),
