@@ -22,7 +22,7 @@ Usage
 When unit testing various components of your project, you should inject an instance of MockAnalyticsEngine instead of the Pendo engine. This allows your unit tests to run without any Pendo dependency and allows you to verify which events are tracked and when.
 
 #### Simple use case
- We can initialise `PendoAnalyticsEngine` just by configuring the `PendoAnalyticsConfiguration` object as shwon below and use this config object in the Engine initialiser. All we need is an app key to configure  `PendoAnalyticsConfiguration`.
+ We can initialise `PendoAnalyticsEngine` just by configuring the `PendoAnalyticsConfiguration` object as shwon below and use this `config` object in the Engine initialiser. We need a Pendo app key to configure  `PendoAnalyticsConfiguration`.
 
 ```swift
 import YAnalyticsPendo
@@ -42,7 +42,7 @@ final class AppCoordinator {
 ```
 
 #### Custom Configuration
-`PendoAnalyticsConfiguration` can be initialised with follwoing arguments where app key is required and for mappings, sessionData and debugMode we have a default value for each.
+`PendoAnalyticsConfiguration` can be initialised with following arguments where app key is required and for mappings, sessionData and debugMode we have a default value for each.
 
 ```swift
 import YAnalyticsPendo
