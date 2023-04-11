@@ -1,11 +1,13 @@
 # Y—Analytics Pendo
-_A Pendo SDK implementation of Y—Analytics `AnalyticsEngine` protocol._
+_A Pendo implementation of Y—Analytics' `AnalyticsEngine` protocol._
 
-This framework links the [Pendo iOS SDK](https://github.com/pendo-io/pendo-mobile-ios) to implement a Pendo version of [Y—Analytics](https://github.com/yml-org/yanalytics-ios) `AnalyticsEngine` protocol.
+This framework links the [Pendo iOS SDK](https://github.com/pendo-io/pendo-mobile-ios) to implement a Pendo version of [Y—Analytics](https://github.com/yml-org/yanalytics-ios)' `AnalyticsEngine` protocol.
 
 Licensing
 ----------
 Y—Analytics Pendo is licensed under the [Apache 2.0 license](LICENSE).
+
+Pendo iOS SDK does not have any license listed on their [GitHub page](https://github.com/pendo-io/pendo-mobile-ios).
 
 Documentation
 ----------
@@ -19,20 +21,24 @@ Usage
 
 `PendoAnalyticsEngine` implements the `AnalyticsEngine` protocol, and in its `track(event:)` method it maps the `AnalyticsEvent` enum to the appropriate Pendo methods.
 
-When unit testing various components of your project, you should inject an instance of MockAnalyticsEngine instead of the Pendo engine. This allows your unit tests to run without any Pendo dependency and allows you to verify which events are tracked and when.
+Internally the Pendo SDK is just using singleton objects, but the goal of Y—Analytics is to use Dependency Injection of a generic wrapper. This allows your project code to be loosely coupled to your choice of analytics provider. It also facilitates unit testing and a healthy app architecture.
 
-#### Simple use case
- We can initialise `PendoAnalyticsEngine` just by configuring the `PendoAnalyticsConfiguration` object as shwon below and use this `config` object in the Engine initialiser. We need a Pendo app key to configure  `PendoAnalyticsConfiguration`.
+Just be aware that even if you declare multiple instances of `PendoAnalyticsEngine`, that they all reference the same Pendo SDK singleton.
+
+When unit testing various components of your project, you should inject an instance of `MockAnalyticsEngine` instead of the Pendo engine. This allows your unit tests to run without any Pendo dependency and allows you to verify which events are tracked and when.
+
+#### Simple use case: app key
+You may initialize `PendoAnalyticsEngine` by passing a Pendo app key.
 
 ```swift
 import YAnalyticsPendo
 
 final class AppCoordinator {
-    let engine: PendoAnalyticsEngine = {
+    let engine: AnalyticsEngine = {
         let config = PendoAnalyticsConfiguration(appKey: "S3cr3t!")
         return PendoAnalyticsEngine(configuration: config)
     }()
-    
+
     func trackSomething(someData: [String: Any]?) {
         engine.track(
             event: .event(name: "Something", parameters: someData)
@@ -41,19 +47,27 @@ final class AppCoordinator {
 }
 ```
 
-#### Custom Configuration
-`PendoAnalyticsConfiguration` can be initialised with following arguments where app key is required and for mappings, sessionData and debugMode we have a default value for each.
+#### Additional configuration options
+In addition to the required app key, `PendoAnalyticsConfiguration` can be initialized with the following additional parameters:
+
+1. mappings: information for mapping from `AnalyticsEvent` to Pendo events
+2. session data: starts a session with the specified account and visitor id's and associated data.
+3. debug mode: turn on/off debug mode
 
 ```swift
 import YAnalyticsPendo
 
 final class AppCoordinator {
-    let engine: PendoAnalyticsEngine = {
+    let mappings: [String: PendoEventMapping] = ...
+    let session: PendoSessionData = ...
+    let isDebugMode: Bool = false
+    
+    let engine: AnalyticsEngine = {
         let config = PendoAnalyticsConfiguration(
             appKey: "S3cr3t!",
-            mappings: [:],
-            sessionData: PendoSessionData(),
-            debugMode: false
+            mappings: mappings,
+            sessionData: session,
+            debugMode: isDebugMode
         )
         return PendoAnalyticsEngine(configuration: config)
     }()
