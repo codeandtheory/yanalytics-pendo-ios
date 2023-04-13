@@ -1,4 +1,5 @@
 ![Y—Analytics Pendo](https://user-images.githubusercontent.com/1037520/231155485-30ab1c51-f067-498b-9cfd-20d7369c0637.jpeg)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fyml-org%2Fyanalytics-pendo-ios%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/yml-org/yanalytics-pendo-ios) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fyml-org%2Fyanalytics-pendo-ios%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/yml-org/yanalytics-pendo-ios)  
 _A Pendo implementation of Y—Analytics' `AnalyticsEngine` protocol._
 
 This framework links the [Pendo iOS SDK](https://github.com/pendo-io/pendo-mobile-ios) to implement a Pendo version of [Y—Analytics](https://github.com/yml-org/yanalytics-ios)' `AnalyticsEngine` protocol.
